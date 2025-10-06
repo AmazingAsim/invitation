@@ -1,13 +1,152 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap');
+@import url('../node_modules/bootstrap/');
+
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#map{
+  width: 100%;
+}
+
+#venue{
+  font-family: cursive;
+  text-shadow: 0px 0px 5px black;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+body{
+  background:url("https://static.vecteezy.com/system/resources/previews/047/274/684/non_2x/beautiful-indoor-wedding-aisle-with-elegant-floral-decorations-in-soft-pastel-colors-creating-a-romantic-and-enchanting-atmosphere-photo.jpg");
+  background-size:cover;
+  height: 100vh;
+  background-attachment: fixed;
+  font-weight: 400;
+  overflow-x: hidden;
+  font-style: normal;
+  backdrop-filter: blur(5px);
+}
+header{
+   padding:20px;
+   text-align:center;
+   color:whitesmoke;
+   font-family: "Lavishly Yours", cursive;
+}
+
+header h1{
+  margin-bottom:10px;
+  background-image: url('https://img.freepik.com/free-photo/shiny-golden-glitter-festive-background_53876-132895.jpg?semt=ais_hybrid&w=740&q=80');
+  color: transparent;
+  background-clip: text;
+  filter: drop-shadow(5px 5px 5px black);
+  font-size: 8rem;
+}
+
+
+
+header p{
+  color:black;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px white;
+  font-size: 6rem;
+}
+
+.card{
+  width:600px;
+  aspect-ratio:2/3;
+  perspective:1000px;
+  transform-style:preserve-3d;
+  margin:100px auto;
+  cursor:pointer;
+  transition: transform 1s;
+  position: relative;
+  animation: float 10s linear infinite alternate;
+  box-shadow: 2px 2px 10px white;
+}
+
+.card:hover{
+  animation-play-state: paused;
+}
+
+.cb{
+  position:absolute;
+  width:inherit;
+}
+
+.back{
+  transform:rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+
+
+@keyframes float {
+  0% {
+    transform: 
+    rotateY(0deg)
+    rotateZ(-10deg)
+    rotateX(10deg)
+  }
+
+  100% {
+    transform:
+    rotateY(360deg)
+    rotateZ(10deg)
+    rotateX(-10deg)
+  }
+}
+
+
+
+img{
+  width:100%;
+  aspect-ratio:2/3;
+  object-fit:cover;
+}
+
+.hint {
+  text-align: center;
+  font-size: 1.3rem;
+  color: white;
+  text-shadow: 0 0 10px black;
+  animation: fadeInOut 3s ease-in-out infinite;
+  font-family: cursive;
+  margin-top: -60px;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-5px); }
+}
+
+
+
+@media screen and (max-width:768px) {
+
+  .card:hover{
+    animation-play-state: running;
+  }
+ 
+  header h1{
+    font-size: 8rem;
+  }
+  p{
+    font-size: 2rem !important;
+  }
+  .card{
+    width: 100%;
+    margin: 0 auto;
+     animation: none;
+    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+    transition: transform 0.1s ease-out;
+    cursor: grab;
+  }
+.cardbox{
+  background-color: transparent;
+  perspective: 1200px;
+}
+  
 }
