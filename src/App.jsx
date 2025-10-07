@@ -2,6 +2,8 @@
 import './App.css';
 import { useParams } from 'react-router-dom';
 import { useState,useRef,useEffect } from 'react';
+import front from './assects/front.jpeg'
+import back from './assects/back.jpeg'
 function App() {
   const params = useParams();
   const guest = params.guest || 'Guest';
@@ -71,10 +73,10 @@ function App() {
           transform: `rotateY(${rotation.y}deg) rotateX(${rotation.x}deg)`
         }}>
             <div class="front cb">
-                <img src="https://r1.ilikewallpaper.net/iphone-wallpapers/download-112427/Abs-of-Freedom-Eren-Yeager-Attack-on-Titan-Otaku-W_640.jpg" alt=""/>
+                <img src={front} alt=""/>
             </div>
             <div class="back cb">
-              <img src="https://i.pinimg.com/736x/83/01/9d/83019dcf646ae4258776fca83a10c0ae.jpg" alt=""/>
+              <img src={back} alt=""/>
             </div>
        </div>
     </div>
