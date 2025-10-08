@@ -13,6 +13,25 @@ function App() {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+  const [fontSize, setFontSize] = useState('2.5rem');
+
+  useEffect(() => {
+  if (!guest) return;
+  const length = guest.length;
+
+  if(window.innerWidth < 768){
+    // Adjust dynamically based on name length
+  if (length < 8) setFontSize('8rem');
+  else if (length < 12) setFontSize('5rem');
+  else if (length < 18) setFontSize('4rem');
+  else if (length < 25) setFontSize('3rem');
+  else setFontSize('1.3rem');
+  }
+  else{
+    setFontSize('8.5rem');
+  }
+
+}, [guest]);
 
   // 🎆 Fireworks Effect
   useEffect(() => {
@@ -143,7 +162,7 @@ function App() {
       <canvas ref={canvasRef} className="fireworks-canvas"></canvas>
 
       <header>
-        <h1>Dear! <br />{guest}</h1>
+        <h1 style={{ fontSize: fontSize }}>Dear! <br />{guest}</h1>
         <p>
           We’re delighted to have you here! <br />
           Your presence means the world to us as we begin a new chapter of love and togetherness.
