@@ -21,14 +21,15 @@
 }
 
 body{
-  background:url("https://static.vecteezy.com/system/resources/previews/047/274/684/non_2x/beautiful-indoor-wedding-aisle-with-elegant-floral-decorations-in-soft-pastel-colors-creating-a-romantic-and-enchanting-atmosphere-photo.jpg");
+  background:url("https://static.vecteezy.com/system/resources/previews/022/517/629/non_2x/elegant-golden-floral-background-with-hand-drawn-flowers-and-leaves-illustration-decoration-on-dark-blue-vector.jpg");
   background-size:cover;
   height: 100vh;
   background-attachment: fixed;
   font-weight: 400;
   overflow-x: hidden;
   font-style: normal;
-  backdrop-filter: blur(5px);
+   font-family: "Lavishly Yours", cursive;
+  /* backdrop-filter: blur(5px); */
 }
 header{
    padding:20px;
@@ -40,7 +41,7 @@ header{
 header h1{
   padding: 20px;
   margin-bottom:10px;
-  background-image: url('https://img.freepik.com/premium-vector/pink-glitter-background_135595-16521.jpg');
+  background-image: url('https://t3.ftcdn.net/jpg/03/04/39/38/360_F_304393805_1w4NqzgmucgEvbyiUsOXQ66D1vGqmTed.jpg');
   color: transparent;
   background-clip: text;
   filter: drop-shadow(5px 5px 2px black);
@@ -53,10 +54,13 @@ header h1{
 
 
 header p{
-  color:black;
+  color:goldenrod;
   font-weight: bold;
-  text-shadow: 2px 2px 2px white;
-  font-size: 6rem;
+  /* text-shadow: 2px 2px 2px goldenrod, 6px 6px 2px black, -2px -2px 2px black; */
+  font-size: 4rem;
+  width:50%;
+  margin:0 auto;
+  word-break: 'break-word'
 }
 
 .card{
@@ -139,16 +143,37 @@ img{
   50% { opacity: 1; transform: translateY(-5px); }
 }
 
+.subheaders{
+  color:white;
+  text-shadow: 0 0 10px black;
+  font-size: 3rem;
+  font-weight: 900;
+  border-bottom: 10px double goldenrod;
+  text-shadow: 0px 0px 10px goldenrod;
 
+}
+
+.subsub{
+
+  color:darkgoldenrod;
+  text-shadow: 0 0 10px black;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0px 0px 10px goldenrod;
+}
 
 @media screen and (max-width:768px) {
 
+  body{
+    background-position: center;
+  }
   .card:hover{
     animation-play-state: running;
   }
  
   p{
-    font-size: 2rem !important;
+    font-size: 3rem !important;
+    width: 90% !important;
   }
   .card{
     width: 100%;
@@ -161,6 +186,8 @@ img{
 .cardbox{
   background-color: transparent;
   perspective: 1200px;
+  width: 80%;
+  margin: auto;
 }
   
 }

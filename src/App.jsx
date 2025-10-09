@@ -34,85 +34,96 @@ function App() {
 }, [guest]);
 
   // 🎆 Fireworks Effect
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    let w = window.innerWidth;
-    let h = window.innerHeight;
+useEffect(() => {
+  const canvas = canvasRef.current;
+  const ctx = canvas.getContext('2d');
+  let w = window.innerWidth;
+  let h = window.innerHeight;
+  canvas.width = w;
+  canvas.height = h;
+
+  class Confetti {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * w;
+      this.y = Math.random() * -h; // start above the screen
+      this.size = Math.random() * 10 + 6;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.tilt = Math.random() * 10 - 10;
+      this.tiltAngleIncrement = Math.random() * 0.08 + 0.04;
+      this.tiltAngle = Math.random() * Math.PI;
+      this.speed = Math.random() * 2 + 2;
+      this.rotation = Math.random() * 360;
+      this.rotationSpeed = Math.random() * 6 - 3;
+    }
+
+    update() {
+      this.y += this.speed;
+      this.x += Math.sin(this.tiltAngle) * 2;
+      this.tiltAngle += this.tiltAngleIncrement;
+      this.rotation += this.rotationSpeed;
+
+      // reset when out of screen
+      if (this.y > h + 20) this.reset();
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate((this.rotation * Math.PI) / 180);
+      ctx.fillStyle = this.color;
+      ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size / 2);
+      ctx.restore();
+    }
+  }
+
+  const colors = [
+    '#FF0A47', '#14FC56', '#1E90FF', '#FFCE00',
+    '#FF8C00', '#FF00FF', '#00FFFF', '#FF69B4', '#ADFF2F'
+  ];
+
+  const confettis = Array.from({ length: 200 }, () => new Confetti());
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    confettis.forEach(c => {
+      c.update();
+      c.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // stop after 20 seconds with fade out
+  setTimeout(() => {
+    const fade = setInterval(() => {
+      ctx.globalAlpha -= 0.02;
+      if (ctx.globalAlpha <= 0) {
+        clearInterval(fade);
+        canvas.style.display = 'none';
+      }
+    }, 50);
+  }, 20000);
+
+  // handle resize
+  const resize = () => {
+    w = window.innerWidth;
+    h = window.innerHeight;
     canvas.width = w;
     canvas.height = h;
+  };
+  window.addEventListener('resize', resize);
 
-    class Particle {
-      constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.radius = Math.random() * 4 + 1;
-        this.angle = Math.random() * 2 * Math.PI;
-        this.speed = Math.random() * 5 + 2;
-        this.life = 100;
-      }
-      update() {
-        this.x += Math.cos(this.angle) * this.speed;
-        this.y += Math.sin(this.angle) * this.speed;
-        this.speed *= 0.95;
-        this.life--;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
-    }
+  return () => {
+    window.removeEventListener('resize', resize);
+  };
+}, []);
 
-    let particles = [];
-    const colors = ['#ff0043', '#14fc56', '#1e90ff', '#ffff00', '#ff8c00', '#ff00ff'];
 
-    function createFirework(x, y) {
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      for (let i = 0; i < 100; i++) {
-        particles.push(new Particle(x, y, color));
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, w, h);
-      particles.forEach((p, i) => {
-        p.update();
-        p.draw();
-        if (p.life <= 0) particles.splice(i, 1);
-      });
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    // Launch fireworks on load
-    for (let i = 0; i < 20; i++) {
-      setTimeout(() => {
-        createFirework(Math.random() * w, Math.random() * h / 2);
-      }, i * 500);
-    }
-
-    // Fade out after 5s
-    setTimeout(() => {
-      canvas.style.transition = "opacity 1s ease";
-      canvas.style.opacity = "0";
-      setTimeout(() => (canvas.style.display = "none"), 1000);
-    }, 5000);
-
-    // Resize handling
-    const resize = () => {
-      w = window.innerWidth;
-      h = window.innerHeight;
-      canvas.width = w;
-      canvas.height = h;
-    };
-    window.addEventListener('resize', resize);
-
-    return () => window.removeEventListener('resize', resize);
-  }, []);
 
   // 📱 Card rotation logic
   useEffect(() => {
@@ -183,8 +194,13 @@ function App() {
           </div>
         </div>
       </div>
-
       <p className="hint">✨ Swipe to rotate ✨</p>
+
+      {/* <section id="dates" className='container'>
+          <h2 class="subheaders">Save the dates</h2>
+          <h3 class="subsub">Haldi</h3>
+          <p className='text-light fw-bolder fs-1'>28th Dec 2025</p>
+      </section> */}
 
       <section className="container mt-5 text-light" id="venue">
         <h2 className="display-1 text-light fw-bolder text-center">Venue</h2>
