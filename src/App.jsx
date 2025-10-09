@@ -21,8 +21,8 @@ function App() {
 
   if(window.innerWidth < 768){
     // Adjust dynamically based on name length
-  if (length < 8) setFontSize('8rem');
-  else if (length < 12) setFontSize('5rem');
+  if (length < 8) setFontSize('6rem');
+  else if (length < 12) setFontSize('4rem');
   else if (length < 18) setFontSize('4rem');
   else if (length < 25) setFontSize('3rem');
   else setFontSize('1.3rem');
@@ -47,7 +47,7 @@ function App() {
         this.x = x;
         this.y = y;
         this.color = color;
-        this.radius = Math.random() * 2 + 1;
+        this.radius = Math.random() * 4 + 1;
         this.angle = Math.random() * 2 * Math.PI;
         this.speed = Math.random() * 5 + 2;
         this.life = 100;
@@ -71,7 +71,7 @@ function App() {
 
     function createFirework(x, y) {
       const color = colors[Math.floor(Math.random() * colors.length)];
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 100; i++) {
         particles.push(new Particle(x, y, color));
       }
     }
