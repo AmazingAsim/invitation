@@ -6,7 +6,6 @@ import App from "./App";
 import Venue from "./slides/Venue";
 import Card from "./slides/Card";
 import PageWrapper from "./PageWrapper";
-
 const AnimatedRoutes = () => {
   const location = useLocation();
 
