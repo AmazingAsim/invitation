@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap');
+
+
+@media screen and (max-width: 768px) {
+    #venue{
+        height: 100vh;
+        background-image: url('https://media.tenor.com/438H6u87JfsAAAAM/sky-clouds.gif');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        /* overflow-y: hidden; */
+        z-index: -1;
+        background-attachment: fixed;
+        position: relative;
+
+    }
+    h1,h2{
+        font-size: 5rem !important;
+        font-weight: bold !important;
+        font-family: great vibes;
+        color: black;
+        text-shadow: 2px 2px 4px #000000;
+        padding:50px 10px;
+    }
+    
+    
+}

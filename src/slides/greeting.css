@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap');
+
+@media screen and (max-width: 768px) {
+    #greeting{
+        height: 100vh;
+        background-image: url('https://cdn.create.vista.com/api/media/medium/550480736/stock-vector-hal-agra-india-outline-doodle-drawing-white-background?token=');
+        background-size: cover;
+        background-position: center;
+        overflow-y: hidden;
+        z-index: -1;
+        background-attachment: fixed;
+        position: relative;;
+    }  
+
+    .intro h1{
+        font-family:great vibes;
+        font-size: 4rem !important;
+        font-weight: bold !important;
+    }
+
+    h3{
+        font-family:dancing script;
+        font-size: 2rem !important;
+        font-weight: bold !important;
+        padding: 20px;
+    }
+
+     .couple-names {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            font-weight: bold;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s forwards;
+        }
+        
+        .name.asim {
+            animation-delay: 0.5s;
+        }
+        
+        .name.ifra {
+            animation-delay: 1s;
+        }
+        
+        .and {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: white;
+            text-shadow: 0 0 10px black;
+            margin: 0 15px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1.5s;
+        }
+
+        .continue-button{
+             font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: black;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border:none;
+            border-radius: 5px;
+            background-color:tomato;
+            text-shadow: 0 0 5px black;
+            box-shadow: 0 0 10px black;
+            position: absolute;
+            bottom:100px;
+            left: 35%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            animation: shake 0.5s infinite linear alternate;
+        }
+
+        .continue-button:active{
+            background-color: goldenrod;
+        }
+}
+
+
+
+        
+
+         @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes shake {
+            from{
+                transform:rotate(-5deg);
+            }
+            to{
+                transform:rotate(5deg);
+            }
+        }
