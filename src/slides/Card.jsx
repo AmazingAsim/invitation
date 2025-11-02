@@ -2,6 +2,7 @@ import React from 'react'
 import { useState,useEffect,useRef } from 'react';
 import front from '../assects/front.jpeg';
 import back from '../assects/back.jpeg';
+import { Link } from 'react-router-dom';
 export default function Card() {
 
 
@@ -159,6 +160,7 @@ export default function Card() {
                 </div>
             </div>
             <p className="hint">✨ Swipe to rotate ✨</p>
+            <Link to="/venue" className="continue-button">Venue</Link>
         </div>
     )
 }
