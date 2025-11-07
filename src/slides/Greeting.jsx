@@ -10,7 +10,7 @@ export default function Greeting() {
     useEffect(function(){
         setTimeout(function(){
             navigate('/venue')
-        },8000)
+        },3000)
     },[])
 
     return (
